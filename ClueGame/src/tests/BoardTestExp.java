@@ -1,6 +1,7 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
@@ -88,5 +89,39 @@ public class BoardTestExp {
 		assertTrue(testList.contains(board.getCell(3, 2)));
 		assertTrue(testList.contains(board.getCell(2, 1)));
 		assertTrue(testList.contains(board.getCell(2, 3)));
+	}
+
+	/**
+	 * Occupied cells cannot be targets or be moved through.
+	 * Case 1: start [0][0], roll 2, [1][0] occupied. An empty board gives
+	 * [0][2], [1][1], [2][0]; [2][0] is now blocked, but [1][1] is still
+	 * reachable through [0][1].
+	 * Case 2: start [3][3], roll 3, [2][3] occupied. An empty board gives
+	 * 6 targets; [2][3] is occupied and [0][3] behind it is blocked.
+	 */
+	@Test
+	public void testTargetsOccupied() {
+		// Case 1: occupied cell blocks the path down the left edge
+		board.getCell(1, 0).setOccupied(true);
+		TestBoardCell cell = board.getCell(0, 0);
+		board.calcTargets(cell, 2);
+		Set<TestBoardCell> targets = board.getTargets();
+		assertEquals(2, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 2)));
+		assertTrue(targets.contains(board.getCell(1, 1)));
+		assertFalse(targets.contains(board.getCell(2, 0)));
+
+		// Case 2: occupied cell is not a target and blocks cells behind it
+		board = new TestBoard();
+		board.getCell(2, 3).setOccupied(true);
+		cell = board.getCell(3, 3);
+		board.calcTargets(cell, 3);
+		targets = board.getTargets();
+		assertEquals(3, targets.size());
+		assertTrue(targets.contains(board.getCell(3, 0)));
+		assertTrue(targets.contains(board.getCell(2, 1)));
+		assertTrue(targets.contains(board.getCell(1, 2)));
+		assertFalse(targets.contains(board.getCell(2, 3)));
+		assertFalse(targets.contains(board.getCell(0, 3)));
 	}
 }
