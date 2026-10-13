@@ -1,0 +1,14 @@
+// Clue setup file - Avatar: The Last Airbender theme
+// Rooms: Room, name, initial
+Room, Southern Air Temple, A
+Room, Northern Water Tribe, N
+Room, Western Air Temple, T
+Room, Kyoshi Island, K
+Room, Ba Sing Se, B
+Room, Fire Nation Capital, F
+Room, Omashu, O
+Room, Southern Water Tribe, S
+Room, Boiling Rock, R
+// Spaces: Space, name, initial
+Space, Walkway, W
+Space, Unused, X
