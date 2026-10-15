@@ -30,9 +30,14 @@ public class BoardTestExp {
 			board.calcTargets(board.getCell(1,2), 1);
 			
 		}
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch (Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
 			
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 	}
 	
@@ -43,8 +48,13 @@ public class BoardTestExp {
 			board.calcTargets(board.getCell(2,4), 2);
 			
 		}
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch(Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 	}
 	
@@ -55,8 +65,13 @@ public class BoardTestExp {
 			board.calcTargets(board.getCell(1,3), 3);
 			
 		}
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch(Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 	}
 	
@@ -66,8 +81,13 @@ public class BoardTestExp {
 			board.calcTargets(board.getCell(3,1), 4);
 			
 		}
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch(Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 	}
 	
@@ -76,8 +96,13 @@ public class BoardTestExp {
 			board.calcTargets(board.getCell(2,1), 5);
 			
 		}
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch(Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 	}
 	
@@ -86,8 +111,13 @@ public class BoardTestExp {
 			board.calcTargets(board.getCell(1,1), 6);
 			
 		}
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch(Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 	}
 	
@@ -97,8 +127,13 @@ public class BoardTestExp {
 			board.calcTargets(board.getCell(2,2), 3);
 			
 		}
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch(Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 	}
 	
@@ -109,7 +144,11 @@ public class BoardTestExp {
 		try {
 			
 			
+<<<<<<< HEAD
+			board.getCell(1,3).setOccupied();
+=======
 			board.getCell(1,3).setOccupied(true);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 			//setOccupied
 			
 			
@@ -117,7 +156,11 @@ public class BoardTestExp {
 		
 			
 			
+<<<<<<< HEAD
+			Target=board.getTargets();
+=======
 			Set<TestBoardCell> Target= new board.getTargets();
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 			
 			
 			for(int i=0; i<Target.size(); i++) {
@@ -128,8 +171,13 @@ public class BoardTestExp {
 			}
 		}
 			
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch (Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 	}
 	
@@ -137,12 +185,20 @@ public class BoardTestExp {
 	public void occupied2() {
 		try {
 			
+<<<<<<< HEAD
+			board.getCell(2,3).setOccupied();
+=======
 			board.getCell(2,3).setOccupied(true);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 			
 			
 			board.calcTargets(board.getCell(2,2), 1);
 			
+<<<<<<< HEAD
+			Target=board.getTargets();
+=======
 			Set<TestBoardCell> Target= new board.getTargets();
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 			
 			
 			for(int i=0; i<Target.size(); i++) {
@@ -153,8 +209,13 @@ public class BoardTestExp {
 			}
 		}
 			
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch (Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 	}
 	
@@ -172,7 +233,11 @@ public class BoardTestExp {
 			board.getCell(1,3).setRoom(true);
 			
 			board.calcTargets(board.getCell(1,1), 2);
+<<<<<<< HEAD
+			Target=board.getTargets();
+=======
 			Set<TestBoardCell> Target= new board.getTargets();
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 			
 			
 		
@@ -189,8 +254,13 @@ public class BoardTestExp {
 		
 			
 		
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch (Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 		
 	}
@@ -200,8 +270,13 @@ public class BoardTestExp {
 			board.getCell(2,3).setRoom(true);
 			
 			board.calcTargets(board.getCell(2,2), 1);
+<<<<<<< HEAD
+			Target=board.getTargets();
+			
+=======
 			Set<TestBoardCell> Target= new board.getTargets();
 			//new HashSet<TestBoardCell>()
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 			
 		
 		for(int i=0; i<Target.size(); i++) {
@@ -219,8 +294,13 @@ public class BoardTestExp {
 			
 			
 		
+<<<<<<< HEAD
+		catch{
+			system.out.println("Failed to calculate target");
+=======
 		catch (Exception e){
 			System.out.println("Failed to calculate target instead got "+e);
+>>>>>>> 4e224ee000dbdd0849b61a328d6a238661e473ea
 		}
 		
 	}
