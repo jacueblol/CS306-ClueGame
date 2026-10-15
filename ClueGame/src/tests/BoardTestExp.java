@@ -124,4 +124,94 @@ public class BoardTestExp {
 		assertFalse(targets.contains(board.getCell(2, 3)));
 		assertFalse(targets.contains(board.getCell(0, 3)));
 	}
+
+	/**
+	 * Targets on an empty board, from three different starting cells and
+	 * with rolls from 1 up to the maximum die roll of 6. A cell may not be
+	 * visited twice in one move, and the move must use the whole roll.
+	 */
+	@Test
+	public void testTargetsNormal() {
+		// Case 1: top left corner [0][0], roll 1, only the two neighbors
+		TestBoardCell cell = board.getCell(0, 0);
+		board.calcTargets(cell, 1);
+		Set<TestBoardCell> targets = board.getTargets();
+		assertEquals(2, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 1)));
+		assertTrue(targets.contains(board.getCell(1, 0)));
+
+		// Case 2: top left corner [0][0], roll 3
+		board.calcTargets(cell, 3);
+		targets = board.getTargets();
+		assertEquals(6, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 1)));
+		assertTrue(targets.contains(board.getCell(0, 3)));
+		assertTrue(targets.contains(board.getCell(1, 0)));
+		assertTrue(targets.contains(board.getCell(1, 2)));
+		assertTrue(targets.contains(board.getCell(2, 1)));
+		assertTrue(targets.contains(board.getCell(3, 0)));
+
+		// Case 3: top left corner [0][0], roll 6 (maximum die roll)
+		board.calcTargets(cell, 6);
+		targets = board.getTargets();
+		assertEquals(7, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 2)));
+		assertTrue(targets.contains(board.getCell(1, 1)));
+		assertTrue(targets.contains(board.getCell(1, 3)));
+		assertTrue(targets.contains(board.getCell(2, 0)));
+		assertTrue(targets.contains(board.getCell(2, 2)));
+		assertTrue(targets.contains(board.getCell(3, 1)));
+		assertTrue(targets.contains(board.getCell(3, 3)));
+
+		// Case 4: inner cell [2][1], roll 2
+		cell = board.getCell(2, 1);
+		board.calcTargets(cell, 2);
+		targets = board.getTargets();
+		assertEquals(6, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 1)));
+		assertTrue(targets.contains(board.getCell(1, 0)));
+		assertTrue(targets.contains(board.getCell(1, 2)));
+		assertTrue(targets.contains(board.getCell(2, 3)));
+		assertTrue(targets.contains(board.getCell(3, 0)));
+		assertTrue(targets.contains(board.getCell(3, 2)));
+
+		// Case 5: inner cell [1][2], roll 4
+		cell = board.getCell(1, 2);
+		board.calcTargets(cell, 4);
+		targets = board.getTargets();
+		assertEquals(7, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 1)));
+		assertTrue(targets.contains(board.getCell(0, 3)));
+		assertTrue(targets.contains(board.getCell(1, 0)));
+		assertTrue(targets.contains(board.getCell(2, 1)));
+		assertTrue(targets.contains(board.getCell(2, 3)));
+		assertTrue(targets.contains(board.getCell(3, 0)));
+		assertTrue(targets.contains(board.getCell(3, 2)));
+
+		// Case 6: bottom right corner [3][3], roll 5
+		cell = board.getCell(3, 3);
+		board.calcTargets(cell, 5);
+		targets = board.getTargets();
+		assertEquals(8, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 1)));
+		assertTrue(targets.contains(board.getCell(0, 3)));
+		assertTrue(targets.contains(board.getCell(1, 0)));
+		assertTrue(targets.contains(board.getCell(1, 2)));
+		assertTrue(targets.contains(board.getCell(2, 1)));
+		assertTrue(targets.contains(board.getCell(2, 3)));
+		assertTrue(targets.contains(board.getCell(3, 0)));
+		assertTrue(targets.contains(board.getCell(3, 2)));
+
+		// Case 7: bottom right corner [3][3], roll 6 (maximum die roll)
+		board.calcTargets(cell, 6);
+		targets = board.getTargets();
+		assertEquals(7, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 0)));
+		assertTrue(targets.contains(board.getCell(0, 2)));
+		assertTrue(targets.contains(board.getCell(1, 1)));
+		assertTrue(targets.contains(board.getCell(1, 3)));
+		assertTrue(targets.contains(board.getCell(2, 0)));
+		assertTrue(targets.contains(board.getCell(2, 2)));
+		assertTrue(targets.contains(board.getCell(3, 1)));
+	}
 }
