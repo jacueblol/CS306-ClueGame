@@ -254,4 +254,45 @@ public class BoardTestExp {
 		assertTrue(targets.contains(board.getCell(2, 2)));
 		assertTrue(targets.contains(board.getCell(3, 1)));
 	}
+
+	/**
+	 * Targets with both a room and an occupied cell on the board.
+	 * Case 1: start [0][3], roll 3, [0][2] occupied, room at [1][2].
+	 * An empty board gives 6 targets; only [1][2], [2][2], and [3][3]
+	 * remain.
+	 * Case 2: start [3][0], roll 4, [2][0] occupied, room at [3][2].
+	 * An empty board gives 6 targets; the occupied cell blocks the left
+	 * edge and the room stops moves through the bottom row, so [2][1] can
+	 * no longer be reached, leaving 5.
+	 */
+	@Test
+	public void testTargetsMixed() {
+		// Case 1: occupied cell and room together near the top right
+		board.getCell(0, 2).setOccupied(true);
+		board.getCell(1, 2).setRoom(true);
+		TestBoardCell cell = board.getCell(0, 3);
+		board.calcTargets(cell, 3);
+		Set<TestBoardCell> targets = board.getTargets();
+		assertEquals(3, targets.size());
+		assertTrue(targets.contains(board.getCell(1, 2)));
+		assertTrue(targets.contains(board.getCell(2, 2)));
+		assertTrue(targets.contains(board.getCell(3, 3)));
+		assertFalse(targets.contains(board.getCell(0, 2)));
+
+		// Case 2: occupied cell above the start, room along the bottom row
+		board = new TestBoard();
+		board.getCell(2, 0).setOccupied(true);
+		board.getCell(3, 2).setRoom(true);
+		cell = board.getCell(3, 0);
+		board.calcTargets(cell, 4);
+		targets = board.getTargets();
+		assertEquals(5, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 1)));
+		assertTrue(targets.contains(board.getCell(1, 0)));
+		assertTrue(targets.contains(board.getCell(1, 2)));
+		assertTrue(targets.contains(board.getCell(2, 3)));
+		assertTrue(targets.contains(board.getCell(3, 2)));
+		assertFalse(targets.contains(board.getCell(2, 0)));
+		assertFalse(targets.contains(board.getCell(2, 1)));
+	}
 }
