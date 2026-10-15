@@ -214,4 +214,44 @@ public class BoardTestExp {
 		assertTrue(targets.contains(board.getCell(2, 2)));
 		assertTrue(targets.contains(board.getCell(3, 1)));
 	}
+
+	/**
+	 * Entering a room ends the move, so a room cell can be a target even
+	 * with steps left over, but no cell past it can be reached through it.
+	 * Case 1: start [0][0], roll 3, room at [0][1]. An empty board gives
+	 * 6 targets; now [0][3] and [1][0] cannot be reached, leaving 4.
+	 * Case 2: start [3][3], roll 4, room at [2][3]. An empty board gives
+	 * 6 targets; the room is now also a target even though it is only
+	 * one step away, giving 7.
+	 */
+	@Test
+	public void testTargetsRoom() {
+		// Case 1: room next to the start blocks the path along the top row
+		board.getCell(0, 1).setRoom(true);
+		TestBoardCell cell = board.getCell(0, 0);
+		board.calcTargets(cell, 3);
+		Set<TestBoardCell> targets = board.getTargets();
+		assertEquals(4, targets.size());
+		assertTrue(targets.contains(board.getCell(0, 1)));
+		assertTrue(targets.contains(board.getCell(1, 2)));
+		assertTrue(targets.contains(board.getCell(2, 1)));
+		assertTrue(targets.contains(board.getCell(3, 0)));
+		assertFalse(targets.contains(board.getCell(0, 3)));
+		assertFalse(targets.contains(board.getCell(1, 0)));
+
+		// Case 2: room one step away is a target before the roll is used up
+		board = new TestBoard();
+		board.getCell(2, 3).setRoom(true);
+		cell = board.getCell(3, 3);
+		board.calcTargets(cell, 4);
+		targets = board.getTargets();
+		assertEquals(7, targets.size());
+		assertTrue(targets.contains(board.getCell(2, 3)));
+		assertTrue(targets.contains(board.getCell(0, 2)));
+		assertTrue(targets.contains(board.getCell(1, 1)));
+		assertTrue(targets.contains(board.getCell(1, 3)));
+		assertTrue(targets.contains(board.getCell(2, 0)));
+		assertTrue(targets.contains(board.getCell(2, 2)));
+		assertTrue(targets.contains(board.getCell(3, 1)));
+	}
 }
