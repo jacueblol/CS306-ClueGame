@@ -26,7 +26,9 @@ public class BoardTestExp {
 	public void setUp() {
 		board = new TestBoard();
 	}
-
+	
+//small change
+	
 	/**
 	 * Top left corner [0][0] is adjacent only to [1][0] and [0][1].
 	 */
