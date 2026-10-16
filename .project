@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>ClueGameV2</name>
+=======
+	<name>CS306-ClueGame</name>
+>>>>>>> 3b6788604c3a82778edaa332676bc0ecf3c80143
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
+<<<<<<< HEAD
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
@@ -13,5 +18,9 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+=======
+	</buildSpec>
+	<natures>
+>>>>>>> 3b6788604c3a82778edaa332676bc0ecf3c80143
 	</natures>
 </projectDescription>
